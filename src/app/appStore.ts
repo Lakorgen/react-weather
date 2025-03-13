@@ -1,9 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { rootReducer } from "./appReducer";
 import { useDispatch, useSelector } from "react-redux";
+import { weatherApi } from "@/entities/weather/api/weatherApi";
 
 export const store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(weatherApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

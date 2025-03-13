@@ -5,3 +5,9 @@
   background-repeat: no-repeat; /* Без повторов */
   height: 100vh; /* Высота во весь экран */
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

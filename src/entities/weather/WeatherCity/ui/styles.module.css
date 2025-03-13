@@ -1,0 +1,41 @@
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.city {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.temp {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 5px 0;
+  gap: 8px;
+}
+.description {
+  margin: 0;
+}
+
+.weatherIcon {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  /* justify-content: space-between; */
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.detailItem {
+  text-align: left;
+}

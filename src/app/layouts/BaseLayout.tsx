@@ -3,12 +3,14 @@ import { Outlet } from "react-router";
 
 const BaseLayout = () => {
   return (
-    <div>
+    <>
       <Header />
-      <div className="container">
-        <Outlet />
-      </div>
-    </div>
+      <main className="main">
+        <div className="container">
+          <Outlet />
+        </div>
+      </main>
+    </>
   );
 };
 
