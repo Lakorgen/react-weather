@@ -1,15 +1,31 @@
-import { WeatherCity } from '@/entities/weather/WeatherCity'
-import React from 'react'
+import { useGetWeatherQuery } from "@/entities/weather/api/weatherApi";
+import { WeatherCity } from "@/entities/weather/WeatherCity";
+import { Search } from "@/features/search";
+import CardsWrapper from "@/shared/ui/CardsWrapper/CardsWrapper";
+import { useSearchParams } from "react-router";
 
 const WeatherCard = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const keyword = searchParams.get("city") || "";
+  const { data, isLoading, isError } = useGetWeatherQuery(keyword, {
+    skip: !keyword,
+    
+  });
+
+  const setKeyword = (city: string) => {
+    setSearchParams(city ? { city } : {});
+  };
 
   return (
     <>
-     {/* <Search />
-    <WeatherCity data={}/> */}
-    
+      <CardsWrapper>
+        <Search keyword={keyword} setKeyword={setKeyword} />
+        {isLoading && <p>Loading</p>}
+        {isError && <p>Error</p>}
+        {data && <WeatherCity data={data} />}
+      </CardsWrapper>
     </>
-  )
-}
+  );
+};
 
-export default WeatherCard
+export default WeatherCard;

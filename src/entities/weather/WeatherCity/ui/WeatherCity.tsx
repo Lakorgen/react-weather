@@ -11,15 +11,15 @@ const WeatherCity = ({ data }: Props) => {
       <h2 className={styles.city}>
         {data.name}, {data.sys.country}
       </h2>
-      <p className={styles.temp}>
+      <div className={styles.temp}>
         {data.main.temp}°C (Ощущается как {data.main.feels_like}°C)
         <img
           src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
           alt={data.weather[0].description}
           className={styles.weatherIcon}
         />
-      <p className={styles.description}>{data.weather[0].description}</p>
-      </p>
+        <p className={styles.description}>{data.weather[0].description}</p>
+      </div>
 
       <div className={styles.details}>
         <p className={styles.detailItem}>🌡 Мин: {data.main.temp_min}°C</p>

@@ -8,6 +8,7 @@ export const weatherApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getWeather: builder.query({
+      keepUnusedDataFor: 15,
       query: (city) => {
         return {
           url: "weather",
