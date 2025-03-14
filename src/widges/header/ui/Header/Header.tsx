@@ -14,7 +14,7 @@ const Header = () => {
                 }
                 to="/"
               >
-                Main
+                Главная
               </NavLink>
             </li>
             <li>
@@ -24,7 +24,7 @@ const Header = () => {
                 }
                 to="/history"
               >
-                History
+                История
               </NavLink>
             </li>
           </ul>

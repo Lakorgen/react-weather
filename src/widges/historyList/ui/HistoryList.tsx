@@ -23,7 +23,11 @@ const HistoryList = () => {
               item.city.toLowerCase().includes(keyword.toLowerCase())
             )
             .map((item) => (
-              <Link to={`/?city=${item.city}`} className={styles.card}>
+              <Link
+                key={item.city}
+                to={`/?city=${item.city}`}
+                className={styles.card}
+              >
                 <p style={{ fontWeight: "bold" }}>
                   {item.city}: {item.temp}Cº
                 </p>

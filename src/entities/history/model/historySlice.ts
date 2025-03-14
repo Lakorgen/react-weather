@@ -12,7 +12,7 @@ interface HistoryState {
 }
 
 const initialState: HistoryState = {
-  history: [],
+  history: JSON.parse(localStorage.getItem("history") || "[]"),
 };
 
 const historySlice = createSlice({
@@ -20,11 +20,15 @@ const historySlice = createSlice({
   initialState,
   reducers: {
     addToHistory: (state, action: PayloadAction<HistoryItem>) => {
-      state.history = state.history.filter((city) => city.city !== action.payload.city);
+      state.history = state.history.filter(
+        (city) => city.city !== action.payload.city
+      );
       state.history.unshift(action.payload);
+      localStorage.setItem("history", JSON.stringify(state.history));
     },
     clearHistory: (state) => {
       state.history = [];
+      localStorage.setItem("history", JSON.stringify(state.history));
     },
   },
 });

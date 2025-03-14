@@ -1,35 +1,34 @@
-// import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ICity } from "@/shared/interfaces/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// interface IFavorites {
-//   id: number;
-//   cities: [];
-// }
+interface FavoritesState {
+  favorites: ICity[];
+}
 
-// interface FavoritesState {
-//   favorites: [];
-// }
+const initialState: FavoritesState = {
+  favorites: JSON.parse(localStorage.getItem("favorites") || "[]"),
+};
 
-// const initialState: FavoritesState = {
-//   favorites: [],
-// };
+export const favoritesSlice = createSlice({
+  name: "favorites",
+  initialState,
+  reducers: {
+    addToFavorites: (state, action: PayloadAction<ICity>) => {
+      state.favorites = state.favorites.filter(
+        (city) => city.name !== action.payload.name
+      );
+      state.favorites.unshift(action.payload);
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
+    },
 
-// export const favoritesSlice = createSlice({
-//   name: "favorites",
-//   initialState,
-//   reducers: {
-//     // addToFavorites: (
-//     //   state: FavoritesState,
-//     //   action: PayloadAction<IFavorites>
-//     // ) => {
-//     //   state.favorites.push(action.payload);
-//     // },
-//     // removeFromFavorites: (
-//     //   state: FavoritesState,
-//     //   action: PayloadAction<IFavorites>
-//     // ) => {
-//     //   state.favorites = state.favorites.filter(
-//     //     (favorite: IFavorites) => favorite.id !== action.payload.id
-//     //   );
-//     // },
-//   },
-// });
+    removeFromFavorites: (state, action: PayloadAction<ICity>) => {
+      state.favorites = state.favorites.filter(
+        (city) => city.name !== action.payload.name
+      );
+      localStorage.setItem("favorites", JSON.stringify(state.favorites));
+    },
+  },
+});
+
+export const { addToFavorites, removeFromFavorites } = favoritesSlice.actions;
+export default favoritesSlice.reducer;

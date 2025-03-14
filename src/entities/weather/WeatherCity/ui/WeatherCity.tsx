@@ -1,8 +1,8 @@
-import { IWeather } from "../../model/types";
+import { ICity } from "@/shared/interfaces/types";
 import styles from "./styles.module.css";
 
 interface Props {
-  data: IWeather;
+  data: ICity;
 }
 
 const WeatherCity = ({ data }: Props) => {
