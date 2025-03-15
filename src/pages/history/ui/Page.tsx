@@ -1,4 +1,4 @@
-import { HistoryList } from "@/widges/historyList";
+import { HistoryList } from "@/widgets/historyList";
 import styles from "./styles.module.css";
 
 const Page = () => {

@@ -1,14 +1,8 @@
+import { IHistoryItem } from "@/shared/interfaces/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface HistoryItem {
-  city: string;
-  weather: string;
-  temp: number;
-  date: string;
-}
-
 interface HistoryState {
-  history: HistoryItem[];
+  history: IHistoryItem[];
 }
 
 const initialState: HistoryState = {
@@ -19,7 +13,7 @@ const historySlice = createSlice({
   name: "history",
   initialState,
   reducers: {
-    addToHistory: (state, action: PayloadAction<HistoryItem>) => {
+    addToHistory: (state, action: PayloadAction<IHistoryItem>) => {
       state.history = state.history.filter(
         (city) => city.city !== action.payload.city
       );

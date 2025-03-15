@@ -1,4 +1,4 @@
-import { Header } from "@/widges/header";
+import { Header } from "@/widgets/header";
 import { Outlet } from "react-router";
 
 const BaseLayout = () => {

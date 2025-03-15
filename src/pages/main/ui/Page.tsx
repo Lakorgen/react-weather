@@ -1,6 +1,6 @@
-import { WeatherCard } from "@/widges/weatherCard";
+import { WeatherCard } from "@/widgets/weatherCard";
 import styles from "./styles.module.css";
-import { FavoritesList } from "@/widges/favoritesList";
+import { FavoritesList } from "@/widgets/favoritesList";
 
 const Page = () => {
   return (

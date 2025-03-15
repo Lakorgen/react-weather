@@ -40,3 +40,10 @@ export interface ICity {
   name: string;
   cod: number;
 }
+
+export interface IHistoryItem {
+  city: string;
+  weather: string;
+  temp: number;
+  date: string;
+}
