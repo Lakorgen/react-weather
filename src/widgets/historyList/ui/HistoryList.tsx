@@ -1,9 +1,10 @@
 import { useAppSelector } from "@/app/appStore";
 import CardsWrapper from "@/shared/ui/CardsWrapper/CardsWrapper";
-import styles from "./styles.module.css";
 import { useSearchParams } from "react-router";
 import { Search } from "@/features/search";
 import HistoryItem from "./HistoryItem";
+import List from "@/shared/ui/List/List";
+import { ClearHistory } from "@/features/clearHistory";
 
 const HistoryList = () => {
   const { history } = useAppSelector((state) => state.history);
@@ -18,7 +19,7 @@ const HistoryList = () => {
     <CardsWrapper>
       <Search keyword={keyword} setKeyword={setKeyword} />
       {history.length > 0 ? (
-        <div className={styles.cards__inner}>
+        <List>
           {history
             .filter((item) =>
               item.city.toLowerCase().includes(keyword.toLowerCase())
@@ -26,10 +27,11 @@ const HistoryList = () => {
             .map((item) => (
               <HistoryItem key={item.city} item={item} />
             ))}
-        </div>
+        </List>
       ) : (
         <p>История пуста</p>
       )}
+      <ClearHistory />
     </CardsWrapper>
   );
 };

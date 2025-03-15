@@ -1,8 +1,8 @@
 import { useAppSelector } from "@/app/appStore";
 import CardsWrapper from "@/shared/ui/CardsWrapper/CardsWrapper";
-import styles from "./styles.module.css";
 import FavoritesItem from "./FavoritesItem";
-import FetchWeather from "@/features/fetchWeather/ui/FetchWeather/FetchWeather";
+import { FetchWeather } from "@/features/fetchWeather";
+import List from "@/shared/ui/List/List";
 
 const FavoritesList = () => {
   const favorites = useAppSelector((state) => state.favorites.favorites);
@@ -11,17 +11,17 @@ const FavoritesList = () => {
     <>
       <CardsWrapper>
         <h3>Избранное</h3>
-        <div className={styles.cards__inner}>
+        <List>
           {favorites.map((favorite) => (
             <FetchWeather
               key={favorite.name}
-              keyword={favorite.name}
+              city={favorite.name}
               render={(data) => (
                 <FavoritesItem key={data.name} favorite={favorite} />
               )}
             />
           ))}
-        </div>
+        </List>
       </CardsWrapper>
     </>
   );
